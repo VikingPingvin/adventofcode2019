@@ -17,11 +17,16 @@ def readOpCodes(path):
 def handle_intcode(index, code_collection):
     iterations = 0
     nextIndex = index
+
     while code_collection[nextIndex] != OPCODE_TERMINATE:
-        if code_collection[nextIndex] == OPCODE_ADD:
-            code_collection[code_collection[nextIndex + 3]] = code_collection[code_collection[nextIndex + 1]] + code_collection[code_collection[nextIndex + 2]]
-        elif code_collection[nextIndex] == OPCODE_MUL:
-            code_collection[code_collection[nextIndex + 3]] = code_collection[code_collection[nextIndex + 1]] * code_collection[code_collection[nextIndex + 2]]
+        opCode = code_collection[nextIndex]
+        leftCode = code_collection[nextIndex + 1]
+        rightCode = code_collection[nextIndex + 2]
+        outCode = code_collection[nextIndex + 3]
+        if opCode == OPCODE_ADD:
+            code_collection[outCode] = code_collection[leftCode] + code_collection[rightCode]
+        elif opCode == OPCODE_MUL:
+            code_collection[outCode] = code_collection[leftCode] * code_collection[rightCode]
         else:
             return 0
         iterations += 1
