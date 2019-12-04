@@ -18,7 +18,7 @@ def readSource(path):
 
 if __name__ == "__main__":
     masses = readSource("source")
-    fuelList = []
+    fuelAmount = 0
     for mass in masses:
-        fuelList.append(calcFuel(mass))
-    print(sum(fuelList))
+        fuelAmount += calcFuel(mass)
+    print(fuelAmount)

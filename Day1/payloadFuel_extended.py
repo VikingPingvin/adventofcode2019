@@ -15,7 +15,7 @@ def calcExtendedFuel(moduleMass):
 if __name__ == "__main__":
     #sourceLocation = os.path.join(os.path.dirname(__file__), 'source.txt')
     moduleMasses = readSource("source")
-    fuelList = []
+    fuelAmount = 0
     for moduleMass in moduleMasses:
-        fuelList.append(calcExtendedFuel(moduleMass))
-    print(sum(fuelList))
+        fuelAmount += calcExtendedFuel(moduleMass)
+    print(fuelAmount)
