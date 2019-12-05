@@ -34,11 +34,28 @@ def handle_intcode(index, code_collection):
     return code_collection[0]
 
 
+def findValues(target, codes):
+    for noun in range(99):
+        for verb in range(99):
+            codesAttempt = codes
+            codesAttempt[1] = noun
+            codesAttempt[2] = verb
+            handle_intcode(0, codesAttempt)
+            if codesAttempt[0] == target:
+                return noun, verb
+    return 0, 0
+
+
 if __name__ == "__main__":
-    codes = readOpCodes("source")
+    codesOriginal = readOpCodes("source")
+    codes = codesOriginal
     # Reset program
     # Replace position 1 with the value 12 and replace position 2 with the value 2.
     codes[1] = 12
     codes[2] = 2
-    print(handle_intcode(0, codes))
+    print('Part 1 answer: ' + str(handle_intcode(0, codesOriginal)))
+
+    noun, verb = findValues(19690720, codes)
+    print('Part 2 andwer: ' + str((100 * noun) + verb))
+
 
