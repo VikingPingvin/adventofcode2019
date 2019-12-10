@@ -1,3 +1,5 @@
+from Day3.parse_source_into_lines import parse_source as ps
+
 
 def line_intersection(line1, line2):
     xdiff = (line1[0][0] - line1[1][0], line2[0][0] - line2[1][0])
@@ -18,6 +20,14 @@ def line_intersection(line1, line2):
 def is_intersect_result_tuple(result):
     return True if isinstance(result, tuple) else False
 
+class line:
+    def __init__(self, startPoints, endPoints):
+        (x0, y0) = startPoints
+        (x1, y1) = endPoints
+
+
 if __name__ == '__main__':
     A = (1, 2)
     print(is_intersect_result_tuple(A))
+    wires_parsed = ps("source")
+    print(wires_parsed)
